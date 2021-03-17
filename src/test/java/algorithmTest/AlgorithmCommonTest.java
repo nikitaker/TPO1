@@ -64,5 +64,33 @@ public class AlgorithmCommonTest extends Assert {
         assertFalse(tree.search(1));
     }
 
+    @Test
+    public void testDeleteNothing() {
+        assertTrue(tree.search(1));
+        tree.delete(2000);
+        assertFalse(tree.delete(2000));
+
+    }
+
+    @Test
+    public void testMoreInsert() {
+        tree.insert(20);
+        tree.insert(21);
+        tree.insert(30);
+        tree.insert(50);
+        tree.insert(2011);
+        tree.insert(2022);
+        tree.insert(20222);
+        tree.insert(20);
+        tree.insert(21);
+        tree.insert(30);
+        tree.insert(50);
+        tree.insert(2011);
+        tree.insert(2022);
+        tree.insert(20222);
+        boolean expected = tree.search(20222);
+        assertTrue(expected);
+    }
+
 
 }

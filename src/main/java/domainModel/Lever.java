@@ -1,9 +1,9 @@
 package domainModel;
 
 public class Lever {
-    boolean isPnut = false;
+    private boolean isPnut = false;
 
-    boolean isPnut(){
+    public boolean isPnut(){
         return isPnut;
     }
 

@@ -18,6 +18,7 @@ public class Node {
      * the variable to deterimed if the node is is Leaf or not.
      */
     public boolean isLeaf;                   // the variable to deterime if the node is is Leaf or not.
+    public int n;
 
     /**
      * The constructor of the node class
@@ -28,4 +29,6 @@ public class Node {
         children = new Node[4];       // We have 4 references for each node
         isLeaf = true;                  // assign the node to be Leaf.
     }
+
 }
+

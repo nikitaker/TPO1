@@ -1,15 +1,9 @@
 package algorithm;
 
 public class BTree {
-    /**
-     * Create a public root node
-     */
+
     public Node root;
 
-    /**
-     * The B Tree Constructor.
-     *  Create new root, assign the root node to be a isLeaf,and initial the key value in the root to -1 (null)
-     */
     public BTree() {
         // new root
         root = new Node();
@@ -24,10 +18,6 @@ public class BTree {
     {
         // root node r
         Node r = root;
-        /* If the root node r is full, the root will be splited and the new node s will be the root
-         * The new root ndoe s will have two children.
-         * The height of the B Tree will grow by one when the root node r gets split
-         */
         if (r.numberOfNodes == 3) {
             // Create a new node s
             Node s = new Node();
@@ -95,11 +85,6 @@ public class BTree {
         }
         newChild.numberOfNodes = 1; // fix it to t -1
 
-        // Here we insert node z as a child of node x
-        for (int j = parentNode.numberOfNodes + 1; j >= childIndex + 1; j--) {
-            parentNode.children[j] = parentNode.children[j - 1];
-            parentNode.key[j - 1] = parentNode.key[j - 2];
-        }
         // assign the reference to the node z ( node z is a child of the node x)
         parentNode.children[childIndex] = z;
         parentNode.key[childIndex - 1] = newChild.key[1];
@@ -147,23 +132,14 @@ public class BTree {
     public boolean delete(Node node, int value) {
         // look up for a key k that will be deleted
         int i = 1;
-//---
-        // find the smallest index i such that k<= x.keyi, or else set i to x.n ++
+
         while (i <= node.numberOfNodes && value > node.key[i - 1]) {
             //increment i
             i++;
         }
-        /* if the x node is an internal node, terminate the search unsuccessful or
-         * recurse to search the appropriate subtree of node x.
-         */
-        // if the node is a is Leaf
         if (node.isLeaf) {
-            // recursive call to search in the subtree of the node x
-            // check if the key k is found
             if (i <= node.numberOfNodes && value == node.key[i - 1]) {
-                // return true if the key k is found in the B Tree
                 node.key[i - 1] = 0;
-                // Deleting and sifting
                 for(int j = i - 1; j < node.numberOfNodes - 1; j++){
                     node.key[j] = node.key[j+1];
                     if(j+1 == node.numberOfNodes - 1)
@@ -174,13 +150,14 @@ public class BTree {
         } else {
             return delete(node.children[i - 1], value);
         }
-        // return false if the key k is not found in the B Tree
         return false;
     }
 
-    /**
-     * To print the B-Tree
-     */
+
+
+
+
+
     public String print() {
          return printBtree(root, "");
     }

@@ -16,8 +16,4 @@ public class Person {
     }
 
     void breathe(){hasAir = true;}
-
-    boolean isZafod(){
-        return this.name.equals("Zafod");
-    }
 }

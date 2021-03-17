@@ -15,8 +15,10 @@ public class Ship {
 
     public Ship()
     {
+
         airBag = new AirBag();
         lever = new Lever();
+        checkAirbag();
         people.add(new Person("A"));
         people.add(new Person("B"));
         people.add(zafod);
@@ -28,11 +30,23 @@ public class Ship {
         airBag.explode();
         people.forEach(e -> e.setPosition("прижатые к стенам"));
         people.forEach(Person::breathe);
-        zafod.kick(lever);
+        if(!lever.isPnut()){zafod.kick(lever);}
     }
 
+
+    void checkAirbag(){
+        if(!airBag.isReady()){airBag.beReady();}
+    }
     public boolean isEmpty() {
         return isEmpty;
+    }
+
+    public AirBag getAirBag(){
+        return airBag;
+    }
+
+    public Lever getLever(){
+        return lever;
     }
 
     public int getPeopleNum(){

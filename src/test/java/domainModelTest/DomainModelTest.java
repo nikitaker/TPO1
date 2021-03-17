@@ -23,4 +23,12 @@ public class DomainModelTest extends Assert {
     public void isShipEmpty() { assertEquals(ship.getPeopleNum(), 3);
     }
 
+    @Test
+    public void AirBagExploded() { assertTrue(ship.getAirBag().isExploded());
+    }
+
+    @Test
+    public void LiverKicked() { assertTrue(ship.getLever().isPnut());
+    }
+
 }
